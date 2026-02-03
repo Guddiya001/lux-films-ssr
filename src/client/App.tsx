@@ -1,6 +1,14 @@
+import { useMemo } from "react";
 import { RouterProvider } from "react-router-dom";
-import { router } from "./router";
+import { createRouter } from "./router";
+import { WishlistProvider } from "../shared/store";
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  const router = useMemo(() => createRouter(), []);
+
+  return (
+    <WishlistProvider>
+      <RouterProvider router={router} />
+    </WishlistProvider>
+  );
 }

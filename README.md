@@ -1,73 +1,168 @@
-# React + TypeScript + Vite
+# Lux Films – SSR Movie Browser
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Lux Films is a server-side rendered web application for browsing films by category, viewing film details, and managing a wishlist.  
+The project demonstrates frontend architecture, SSR without full-stack frameworks, reusable component design, and clean state management.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- Server-Side Rendering (SSR) with custom Node.js server  
+- Browse films in three categories (Popular, Top Rated, Upcoming)  
+- Film detail page with category-based theming  
+- Add films to persistent wishlist  
+- Toast notification on wishlist action  
+- Global header and sticky footer layout  
+- Reusable UI components  
+- Basic unit tests
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧱 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React  
+- TypeScript  
+- Vite  
+- Node.js (Express)  
+- SCSS  
+- React Router  
+- Jest + React Testing Library  
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🏗 Architecture
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+src
+├─ client
+│ ├─ components
+│ ├─ pages
+│ ├─ styles
+│ ├─ router.tsx
+│ └─ main.tsx
+│
+├─ server
+│ ├─ server.ts
+│ └─ render.tsx
+│
+└─ shared
+├─ api.ts
+├─ store.ts
+└─ types.ts
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `client` → Browser-side React application  
+- `server` → SSR logic and HTTP server  
+- `shared` → Types, API layer, and global state  
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 🧠 SSR Strategy
+
+A custom Express server renders React routes using `renderToString` and returns HTML to the browser.
+
+On the client side, React hydrates the HTML using `hydrateRoot`.
+
+This approach improves:
+
+- First paint performance  
+- SEO  
+- Perceived loading speed  
+
+---
+
+## 🌐 Data Layer
+
+All TMDB API calls are centralized in:
+
+src/shared/api.ts
+
+
+This avoids duplication and keeps data access consistent between server and client.
+
+---
+
+## 🧩 State Management
+
+Wishlist state is implemented using React Context:
+
+- Items stored in memory  
+- Persisted to `localStorage`  
+- Accessible via custom hook `useWishlist()`
+
+---
+
+## 🎨 Styling
+
+- SCSS split into:
+  - base.scss  
+  - layout.scss  
+  - components.scss  
+
+Category-based theming is implemented using CSS classes.
+
+---
+
+## 🧪 Testing
+
+Basic unit tests cover:
+
+- FilmCard rendering  
+- Carousel rendering  
+- Wishlist store logic  
+
+Run tests:
+
+npm run test
+
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1) Install dependencies
+
+TMDB_API_KEY=your_api_key_here
+
+
+### 3) Build client
+
+npm run build
+
+### 4) Start server
+
+node dist/server/server.js
+
+
+
+Open:
+
+http://localhost:3000
+
+
+
+---
+
+## 🔍 Trade-offs
+
+- SSR data is fetched on the client after hydration to keep implementation simple  
+- No heavy state management libraries used  
+- UI kept minimal to focus on architecture and structure  
+
+---
+
+## 🔮 Future Improvements
+
+- Server-side data preloading per route  
+- Skeleton loaders  
+- Error boundaries  
+- Pagination / infinite scrolling  
+- Accessibility improvements  
+- End-to-end tests  
+
+---
+
+## 👤 Author
+
+Ashish Kumar Singh  
+Senior Frontend Engineer
+

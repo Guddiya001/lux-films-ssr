@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
-import { getPopularFilms, getTopRatedFilms, getUpcomingFilms } from "../../shared/api";
-import { type Film } from "../../shared/types";
+import {
+  getPopularFilms,
+  getTopRatedFilms,
+  getUpcomingFilms
+} from "../../shared/api";
+
+import {type Film } from "../../shared/types";
+import Carousel from "../components/Carousel";
 
 export default function HomePage() {
   const [popular, setPopular] = useState<Film[]>([]);
@@ -13,18 +19,14 @@ export default function HomePage() {
     getUpcomingFilms().then(setUpcoming);
   }, []);
 
+
   return (
     <>
-      <h1>Films</h1>
+      <h1>Welcome to Lux Films</h1>
+    <Carousel title="Popular" films={popular} category="popular" />
+    <Carousel title="Top Rated" films={topRated} category="topRated" />
+    <Carousel title="Upcoming" films={upcoming} category="upcoming" />
 
-      <h2>Popular</h2>
-      {popular.map(f => <div key={f.id}>{f.title}</div>)}
-
-      <h2>Top Rated</h2>
-      {topRated.map(f => <div key={f.id}>{f.title}</div>)}
-
-      <h2>Upcoming</h2>
-      {upcoming.map(f => <div key={f.id}>{f.title}</div>)}
     </>
   );
 }
