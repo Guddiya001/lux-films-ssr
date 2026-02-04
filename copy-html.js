@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const source = path.join(__dirname, 'dist', 'client', 'index.html');
-const destination = path.join(__dirname, 'api', 'index.html');
+const destination = path.join(__dirname, 'api', 'template.html');
 
 try {
   fs.copyFileSync(source, destination);
