@@ -5,8 +5,7 @@ export default defineConfig({
   plugins: [react()],
 
   build: {
-    rollupOptions: {
-      external: [/^\/api\//]
-    }
+    outDir: "dist/client",
+    emptyOutDir: false
   }
 });

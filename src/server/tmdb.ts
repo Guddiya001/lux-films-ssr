@@ -4,7 +4,7 @@ const BASE_URL = "https://api.themoviedb.org/3";
 
 const API_KEY =
   process.env.TMDB_API_KEY ||
-  process.env.VITE_TMDB_API_KEY;
+  process.env.VITE_TMDB_API_KEY || 'e8495fd74531d711cf338c981a34304e';
  console.log("TMDB:", process.env.TMDB_API_KEY);
 
 async function request<T>(endpoint: string): Promise<T> {
