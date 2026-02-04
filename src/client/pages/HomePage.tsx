@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-// import {
-//   getPopularFilms,
-//   getTopRatedFilms,
-//   getUpcomingFilms
-// } from "../../../api"; 
+import {
+  getPopularFilms,
+  getTopRatedFilms,
+  getUpcomingFilms
+} from "../../server/tmdb"; 
 
 import {Film } from "../../shared/types";
 import Carousel from "../components/Carousel";
@@ -13,11 +13,11 @@ export default function HomePage() {
   const [topRated, setTopRated] = useState<Film[]>([]);
   const [upcoming, setUpcoming] = useState<Film[]>([]);
 
-  // useEffect(() => {
-  //   getPopularFilms().then(setPopular);
-  //   getTopRatedFilms().then(setTopRated);
-  //   getUpcomingFilms().then(setUpcoming);
-  // }, []);
+  useEffect(() => {
+    getPopularFilms().then(setPopular);
+    getTopRatedFilms().then(setTopRated);
+    getUpcomingFilms().then(setUpcoming);
+  }, []);
 
 
   return (
