@@ -5,6 +5,14 @@ The project demonstrates frontend architecture, SSR without full-stack framework
 
 ---
 
+Demo: https://lux-films-ssr-rvr4.vercel.app/
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
 ## 🚀 Features
 
 - Server-Side Rendering (SSR) with custom Node.js server  
