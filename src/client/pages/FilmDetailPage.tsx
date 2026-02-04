@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import { getFilmById } from "../../shared/api";
+import { getFilmById } from "../../api"; 
 import { type Film } from "../../shared/types";
 import { useWishlist } from "../../shared/store";
 
