@@ -4,7 +4,7 @@ import path from "path";
 export async function render(url: string) {
   // For Vercel deployment, read the copied index.html with correct asset hashes
   try {
-    const indexPath = path.join(process.cwd(), "api", "index.html");
+    const indexPath = path.join(process.cwd(), "api", "template.html");
     if (fs.existsSync(indexPath)) {
       return fs.readFileSync(indexPath, "utf-8");
     }

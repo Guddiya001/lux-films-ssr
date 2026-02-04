@@ -7,5 +7,7 @@
     "jsx": "react-jsx",
     "types": ["jest", "@testing-library/jest-dom"],
     "strict": true
-  }
+  },
+  "include": ["src"],
+  "exclude": ["api"]
 }

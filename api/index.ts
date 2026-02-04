@@ -1,5 +1,5 @@
 import { type Film, type FilmResponse } from "../src/shared/types";
-import { render } from "../src/server/render.js";
+//import { render } from "../src/Server/render";
 import { IncomingMessage, ServerResponse } from "http";
 
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -36,26 +36,26 @@ export function getFilmById(id: string): Promise<Film> {
   return request<Film>(`/movie/${id}?language=en-US`);
 }
 
-export default async function handler(req: IncomingMessage, res: ServerResponse) {
-  // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+// export default async function handler(req: IncomingMessage, res: ServerResponse) {
+//   // Set CORS headers
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  if (req.method === 'OPTIONS') {
-    res.writeHead(200);
-    res.end();
-    return;
-  }
+//   if (req.method === 'OPTIONS') {
+//     res.writeHead(200);
+//     res.end();
+//     return;
+//   }
 
-  try {
-    const url = req.url || '/';
-    const html = await render(url);
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end(html);
-  } catch (error) {
-    console.error('SSR Error:', error);
-    res.writeHead(500, { 'Content-Type': 'text/plain' });
-    res.end('Internal Server Error');
-  }
-}
+//   try {
+//     const url = req.url || '/';
+//     const html = await render(url);
+//     res.writeHead(200, { 'Content-Type': 'text/html' });
+//     res.end(html);
+//   } catch (error) {
+//     console.error('SSR Error:', error);
+//     res.writeHead(500, { 'Content-Type': 'text/plain' });
+//     res.end('Internal Server Error');
+//   }
+// }
