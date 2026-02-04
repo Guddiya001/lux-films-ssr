@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Merriweather&family=Roboto&display=swap');
+
+/* global reset to avoid accidental scrollbars */
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden; /* prevent horizontal overflow from 100vw tricks */
+}
+
+.theme-popular {
+  font-family: "Oswald", sans-serif;
+}
+
+.theme-topRated {
+  font-family: "Merriweather", serif;
+}
+
+.theme-upcoming {
+  font-family: "Roboto", sans-serif;
+}
+
+.theme-popular button {
+  background: #e50914;
+  color: white;
+}
+
+.theme-topRated button {
+  background: #1f4fd8;
+  color: white;
+}
+
+.theme-upcoming button {
+  background: #f5a623;
+  color: black;
+}
