@@ -1,12 +1,14 @@
 import { type Film, type FilmResponse,  } from "./types";
 
-const BASE_URL = "https://www.omdbapi.com/";
+const BASE_URL = "https://api.themoviedb.org/3";
 
 const API_KEY =
-  // Vite exposes client env vars on `import.meta.env` (prefix VITE_...)
-  // fall back to process.env for server-side usage
+  // Prefer Vite client env var when available
   (typeof import.meta !== "undefined" ? (import.meta as any).env?.VITE_TMDB_API_KEY : undefined) ||
-  process.env.TMDB_API_KEY;
+  // Fall back to server env var
+  process.env.TMDB_API_KEY ||
+  // Final fallback (development)
+  'e8495fd74531d711cf338c981a34304e';
 
 async function request<T>(endpoint: string): Promise<T> {
   if (!API_KEY) throw new Error("TMDB API key is not set. Define VITE_TMDB_API_KEY or TMDB_API_KEY.");
