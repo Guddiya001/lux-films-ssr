@@ -1,4 +1,4 @@
-import { render } from "../dist/server/render.js";
+const { render } = await import("../dist/server/render.js");
 
 const BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY =
@@ -8,7 +8,7 @@ const API_KEY =
 /* ----------------------------- */
 /* TMDB Request Helper           */
 /* ----------------------------- */
-async function request(endpoint: string) {
+async function request(endpoint) {
   if (!API_KEY) {
     throw new Error("TMDB API key is not defined");
   }
@@ -46,7 +46,7 @@ export async function getUpcomingFilms() {
   return data.results;
 }
 
-export async function getFilmById(id: number ) {
+export async function getFilmById(id ) {
   return request(`/movie/${id}?language=en-US`);
 }
 
@@ -54,7 +54,7 @@ export async function getFilmById(id: number ) {
 /* Vercel Serverless Handler     */
 /* ----------------------------- */
 
-export default async function handler(req:any, res:any) {
+export default async function handler(req, res) {
   // CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
