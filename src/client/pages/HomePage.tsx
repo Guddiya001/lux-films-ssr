@@ -5,7 +5,7 @@ import {
   getUpcomingFilms
 } from "../../../api"; 
 
-import {type Film } from "../../shared/types";
+import {Film } from "../../shared/types";
 import Carousel from "../components/Carousel";
 
 export default function HomePage() {
