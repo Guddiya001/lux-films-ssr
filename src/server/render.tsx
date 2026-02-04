@@ -2,12 +2,14 @@ import fs from "fs";
 import path from "path";
 
 export async function render(url: string) {
-  // In production, serve the built index.html so asset hashes are correct
-  if (process.env.NODE_ENV === "production") {
-    const indexPath = path.join(process.cwd(), "dist", "client", "index.html");
+  // For Vercel deployment, read the copied index.html with correct asset hashes
+  try {
+    const indexPath = path.join(process.cwd(), "api", "index.html");
     if (fs.existsSync(indexPath)) {
       return fs.readFileSync(indexPath, "utf-8");
     }
+  } catch (error) {
+    console.error('Error reading api/index.html:', error);
   }
 
   // Fallback: simple HTML shell used during development

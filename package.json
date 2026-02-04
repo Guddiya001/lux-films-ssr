@@ -4,16 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -k \"npm:watch-build\" \"npm:start-server\"",
+    "dev": "vite",
+    "build": "npm run build:client && npm run build:server && npm run copy-html",
     "build:client": "vite build",
     "build:server": "tsc -p tsconfig.server.json",
-    "build": "npm run build:client && npm run build:server",
-    "watch-build": "chokidar \"src/**\" -c \"npm run build\" --initial",
-    "lint": "eslint .",
+    "start": "node dist/server/server.js",
     "preview": "vite preview",
-    "start": "node ./dist/server/server.js",
-    "start-server": "nodemon --watch dist/server --exec node ./dist/server/server.js --delay 200",
-    "test": "jest"
+    "test": "jest",
+    "copy-html": "node copy-html.js"
   },
   "dependencies": {
     "@testing-library/react": "^16.3.2",
