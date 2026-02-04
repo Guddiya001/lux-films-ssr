@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import { getFilmById } from "../../../api"; 
+import { getFilmById } from "../../server/tmdb"; 
 import { Film } from "../../shared/types";
 import { useWishlist } from "../../shared/store";
 
@@ -15,7 +15,7 @@ export default function FilmDetailPage() {
   const { addToWishlist } = useWishlist();
 
   useEffect(() => {
-    if (id) getFilmById(Number(id)).then(setFilm);
+    if (id) getFilmById(id).then(setFilm);
   }, [id]);
 
   const handleAdd = () => {

@@ -3,7 +3,7 @@ import {
   getPopularFilms,
   getTopRatedFilms,
   getUpcomingFilms
-} from "../../../api"; 
+} from "../../server/tmdb"; 
 
 import {Film } from "../../shared/types";
 import Carousel from "../components/Carousel";
