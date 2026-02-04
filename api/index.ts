@@ -1,5 +1,5 @@
 import { type Film, type FilmResponse } from "../src/shared/types";
-import { render } from "../src/server/render";
+import { render } from "../src/server/render.js";
 import { IncomingMessage, ServerResponse } from "http";
 
 const BASE_URL = "https://api.themoviedb.org/3";
