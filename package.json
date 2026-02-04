@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:client && npm run build:server",
+    "build": "npm run build:client && npm run build:server && npm run copy-html",
     "build:client": "vite build",
     "build:server": "tsc -p tsconfig.server.json",
-    "vercel-build": "npm run build:client",
     "start": "node dist/server/server.js",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "copy-html": "node copy-html.js"
   },
   "dependencies": {
     "@testing-library/react": "^16.3.2",
