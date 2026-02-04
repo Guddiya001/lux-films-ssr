@@ -22,7 +22,7 @@ export default function HomePage() {
 
   return (
     <>
-      <h1>Welcome to Lux Films</h1>
+      <h1 style={{paddingLeft:'20px'}}>Welcome to Lux Films</h1>
     <Carousel title="Popular" films={popular} category="popular" />
     <Carousel title="Top Rated" films={topRated} category="topRated" />
     <Carousel title="Upcoming" films={upcoming} category="upcoming" />
