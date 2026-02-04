@@ -1,6 +1,8 @@
 import express from "express";
 import { render } from "./render.js";
-import "dotenv/config";
+import dotenv from "dotenv";
+dotenv.config();
+
 
 const app = express();
 
