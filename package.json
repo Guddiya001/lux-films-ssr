@@ -5,13 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:client && npm run build:server && npm run copy-html",
+    "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "tsc -p tsconfig.server.json",
     "start": "node dist/server/server.js",
     "preview": "vite preview",
-    "test": "jest",
-    "copy-html": "node copy-html.js"
+    "test": "jest"
   },
   "dependencies": {
     "@testing-library/react": "^16.3.2",
